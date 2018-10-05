@@ -1,19 +1,19 @@
 
-# Pandas Queries Lab
+# Using SQL with Pandas - Lab
 
-## Querying Pandas DataFrames
-
-### Problem Statement
+## Introduction
 
 In this lab, we'll learn the various ways to query a dataset and get information using pandas.
 
-### Objectives
+## Objectives
 
+You will be able to:
+
+* Query DataFrames with SQL using the `pandasql` library
 * Query DataFrames by slicing with conditional logic
 * Use the query method to access data
-* Query dataframes with SQL using the `pandasql` library
 
-### The Dataset
+## The Dataset
 
 In this lab, we'll continue working with the _Titanic Survivors_ Dataset
 
@@ -26,7 +26,7 @@ Next, read in the data from `titanic.csv` and store it as a DataFrame in `df`. D
 df = None
 ```
 
-### Slicing DataFrames Using Conditional Logic
+## Slicing DataFrames Using Conditional Logic
 
 One of the most common ways to query data with pandas is to simply slice the DataFrame so that the object returned contains only the data you're interested in.  
 
@@ -60,7 +60,7 @@ poor_male_survivors_df = None
 Great! Now that we've explored the methods for slicing a DataFrame for querying our data, let's explore a sample use case.  
 
 
-### Practical Example: Slicing DataFrames
+## Practical Example: Slicing DataFrames
 
 We have a sneaking suspicion that women and children survived more than men, and that rich passengers were more likely to survive than poor passengers.  The easiest way to confirm this is to slice the data into DataFrames that contain each subgroup, and then quickly visualize the survival rate of each subgroup with histograms--so that's exactly what we're going to do in the cells below!
 
@@ -93,7 +93,7 @@ To the surprise of absolutely no one, it seems like First Class passengers were 
 
 Slicing is a useful method for quickly getting DataFrames that contain only the examples we're looking for.  It's a quick, easy method that feels intuitive in Python, since we can rely on the same conditional logic that we would if we were just writing `if/else` statements.  
 
-### Using the `.query()` method
+## Using the `.query()` method
 
 Instead of slicing, we can also make use the DataFrame's built-in `.query()` method.  This method reads a bit cleaner, and allows us to pass in our arguments as a string.  For more information or example code on how to use this method, see the [pandas documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.query.html).
 
@@ -136,9 +136,7 @@ In the cell below, use the DataFrame's `eval()` method in place to add a column 
 
 Great! Now, we'll move on the coolest part of this lab--querying DataFrames with SQL!
 
-### Querying DataFrames With SQL
-
-
+## Querying DataFrames With SQL
 
 For this final section of the lab, we'll make use of the `pandasql` library.  Pandasql is a library designed to make it easy to query DataFrames directly wit SQL syntax, which was open-sourced by the company Yhat in late 2016.  It's very straightforward to use, but you are still encouraged to take a look at the [documentation](https://github.com/yhat/pandasql) as needed.  
 
@@ -201,7 +199,7 @@ This library is really powerful! This makes it easy for us to leverage all of SQ
 Although it's outside the scope of this lab, it's also worth noting that both `pandas` and `pandasql` provide built-in functionality for join operations, too!
 
 
-### Practical Example: SQL in Pandas
+## Practical Example: SQL in Pandas
 
 In the cell below, create 2 separate DataFrames using `pandasql`.  One should contain the Pclass of all female passengers that survived, and the other should contain the Pclass of all female passengers that died.  
 
@@ -219,9 +217,6 @@ died_females_by_pclass_df = None
 # Create and label the histograms for each below!
 ```
 
-### Conclusion
+## Summary
 
-In this lab, we learned how to:
-* Query DataFrames by slicing using conditional logic
-* Make use of the `.query()` method to query a dataset
-* Query DataFrames using SQL with the `pandasql` library
+In this lab, you learned how to query Pandas DataFrames using SQL.
