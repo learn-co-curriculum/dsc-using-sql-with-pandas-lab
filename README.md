@@ -184,6 +184,129 @@ no_first_class_df = df[df.Pclass.isin(['2','3'])]
 no_first_class_df.head()
 ```
 
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>male</td>
+      <td>22.0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A/5 21171</td>
+      <td>7.2500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Heikkinen, Miss. Laina</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>STON/O2. 3101282</td>
+      <td>7.9250</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>5</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Allen, Mr. William Henry</td>
+      <td>male</td>
+      <td>35.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>373450</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5</td>
+      <td>6</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Moran, Mr. James</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>330877</td>
+      <td>8.4583</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>7</td>
+      <td>8</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Palsson, Master. Gosta Leonard</td>
+      <td>male</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>349909</td>
+      <td>21.0750</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 We can also chain conditional statements together by wrapping them in parenthesis and making us of the `&` and `|` operators ('and' and 'or' operators, respectively).
 
 In the cell below, slice the DataFrame so that it only contains passengers with a `Fare` value between 50 and 100, inclusive.  
@@ -896,20 +1019,13 @@ We'll start by making sure the library is installed.  Run the cell below.
 !pip install pandasql
 ```
 
-    Collecting pandasql
-      Downloading https://files.pythonhosted.org/packages/6b/c4/ee4096ffa2eeeca0c749b26f0371bd26aa5c8b611c43de99a4f86d3de0a7/pandasql-0.7.3.tar.gz
+    Requirement already satisfied: pandasql in /Users/matthew.mitchell/anaconda3/lib/python3.6/site-packages (0.7.3)
     Requirement already satisfied: numpy in /Users/matthew.mitchell/anaconda3/lib/python3.6/site-packages (from pandasql) (1.14.3)
-    Requirement already satisfied: pandas in /Users/matthew.mitchell/anaconda3/lib/python3.6/site-packages (from pandasql) (0.23.0)
     Requirement already satisfied: sqlalchemy in /Users/matthew.mitchell/anaconda3/lib/python3.6/site-packages (from pandasql) (1.2.7)
+    Requirement already satisfied: pandas in /Users/matthew.mitchell/anaconda3/lib/python3.6/site-packages (from pandasql) (0.23.0)
     Requirement already satisfied: python-dateutil>=2.5.0 in /Users/matthew.mitchell/anaconda3/lib/python3.6/site-packages (from pandas->pandasql) (2.7.3)
     Requirement already satisfied: pytz>=2011k in /Users/matthew.mitchell/anaconda3/lib/python3.6/site-packages (from pandas->pandasql) (2018.4)
     Requirement already satisfied: six>=1.5 in /Users/matthew.mitchell/anaconda3/lib/python3.6/site-packages (from python-dateutil>=2.5.0->pandas->pandasql) (1.11.0)
-    Building wheels for collected packages: pandasql
-      Running setup.py bdist_wheel for pandasql ... [?25ldone
-    [?25h  Stored in directory: /Users/matthew.mitchell/Library/Caches/pip/wheels/53/6c/18/b87a2e5fa8a82e9c026311de56210b8d1c01846e18a9607fc9
-    Successfully built pandasql
-    Installing collected packages: pandasql
-    Successfully installed pandasql-0.7.3
     [33mYou are using pip version 10.0.1, however version 18.1 is available.
     You should consider upgrading via the 'pip install --upgrade pip' command.[0m
 
