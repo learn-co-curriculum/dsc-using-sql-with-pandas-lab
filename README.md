@@ -71,6 +71,7 @@ Also create a DataFrame that contains only male passengers of all ages.
 
 ```python
 women_and_children_df = None
+male_all_ages_df = None
 ```
 
 Great! Now, we'll use the `matplotlib` functionality built into the DataFrame objects to quickly create visualizations of the `Survived` column for each DataFrame.  
