@@ -17,7 +17,7 @@ You will be able to:
 
 In this lab, we'll continue working with the _Titanic Survivors_ Dataset
 
-Begin by importing `pandas` as `pd`, `numpy` as `np`, and `matplotlib.pyplot` as `plt`, and set the appropriate alias for each. Also set `%matplotlib inline`.
+Begin by importing `pandas` as `pd`, `numpy` as `np`, and `matplotlib.pyplot` as `plt`, and set the appropriate alias for each. Additionally, set `%matplotlib inline`.
 
 
 ```python
@@ -37,14 +37,14 @@ One of the most common ways to query data with pandas is to simply slice the Dat
 
 In the cell below, slice the DataFrame so that it only contains passengers with 2nd or 3rd class tickets (denoted by the `Pclass` column). 
 
-**_Hint_**: Remember, your conditional logic must be passed in to the slicing operator to return a slice of the DataFrame--otherwise, it will just return a table of boolean values based on the conditional statement!
+**_Hint_**: Remember, your conditional logic must be passed into the slicing operator to return a slice of the DataFrame--otherwise, it will just return a table of boolean values based on the conditional statement!
 
 
 ```python
 no_first_class_df = None
 ```
 
-We can also chain conditional statements together by wrapping them in parenthesis and making us of the `&` and `|` operators ('and' and 'or' operators, respectively).
+We can also chain conditional statements together by wrapping them in parenthesis and making use of the `&` and `|` operators ('and' and 'or' operators, respectively).
 
 In the cell below, slice the DataFrame so that it only contains passengers with a `Fare` value between 50 and 100, inclusive.  
 
@@ -71,7 +71,7 @@ In this section, you're looking to investigate whether women and children surviv
 
 In the cell below, create a DataFrame that contains passengers that are female, as well as children (males included) under the age of 15 (exclusive).   
 
-Also create a DataFrame that contains only male passengers of all ages.  
+Additionally, create a DataFrame that contains only male passengers of all ages.  
 
 
 ```python
@@ -101,7 +101,7 @@ Slicing is a useful method for quickly getting DataFrames that contain only the 
 
 ## Using the `.query()` method
 
-Instead of slicing, you can also make use the DataFrame's built-in `.query()` method.  This method reads a bit cleaner, and allows us to pass in our arguments as a string.  For more information or example code on how to use this method, see the [pandas documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.query.html).
+Instead of slicing, you can also make use of the DataFrame's built-in `.query()` method.  This method reads a bit cleaner, and allows us to pass in our arguments as a string.  For more information or example code on how to use this method, see the [pandas documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.query.html).
 
 In the cell below, use the `.query()` method to slice a DataFrame that contains only passengers who have a `PassengerId` greater than or equal to 500. 
 
@@ -112,7 +112,7 @@ high_passenger_number_df = None
 # high_passenger_number_df.head()
 ```
 
-Just as with slicing, you can pass in queries with mutliple conditions.  One unique difference between using the `.query()` method and conditional slicing is that you can use `and` or `&` as well as `or` or `|` (for fun, try reading this last sentence out loud), while you are limited to the `&` and `|` symbols to denote and/or operations with conditional slicing.  
+Just as with slicing, you can pass in queries with multiple conditions.  One unique difference between using the `.query()` method and conditional slicing is that you can use `and` or `&` as well as `or` or `|` (for fun, try reading this last sentence out loud), while you are limited to the `&` and `|` symbols to denote and/or operations with conditional slicing.  
 
 In the cell below, use the `query()` method to return a DataFrame that contains only female passengers under the age of 15 (exclusive). 
 
@@ -144,7 +144,7 @@ Great! Now, let's move on the coolest part of this lab--querying DataFrames with
 
 ## Querying DataFrames With SQL
 
-For the final section of the lab, you'll make use of the `pandasql` library.  Pandasql is a library designed to make it easy to query DataFrames directly wit SQL syntax, which was open-sourced by the company Yhat in late 2016.  It's very straightforward to use, but you are still encouraged to take a look at the [documentation](https://github.com/yhat/pandasql) as needed.  
+For the final section of the lab, you'll make use of the `pandasql` library.  Pandasql is a library designed to make it easy to query DataFrames directly with SQL syntax, which was open-sourced by the company Yhat in late 2016.  It's very straightforward to use, but you are still encouraged to take a look at the [documentation](https://github.com/yhat/pandasql) as needed.  
 
 If you're using the prebuilt virtual environment, you should already have the package ready to import. If not, run the cell below to pip install pandasql so that it is available to import.
 
@@ -159,7 +159,7 @@ In the cell below, import `sqldf` from `pandasql`.
 
 Great! Now, it's time get some practice with this handy library.
 
-`pandasql` allows you to pass in SQL queries in the form of a string to directly query our database.  Each time you make a query, you need pass in additional parameter that gives it access to the other variables in the session/environment. You can use a lambda function to pass `locals()` or `globals()` so that you don't have to type this every time.  
+`pandasql` allows you to pass in SQL queries in the form of a string to directly query our database.  Each time you make a query, you need pass an additional parameter that gives it access to the other variables in the session/environment. You can use a lambda function to pass `locals()` or `globals()` so that you don't have to type this every time.  
 
 In the cell below, create a variable called `pysqldf` and set it equal to a lambda function `q` that returns `sqldf(q, globals())`.  If you're unsure of how to do this, see the example in the [documentation](https://github.com/yhat/pandasql).
 
