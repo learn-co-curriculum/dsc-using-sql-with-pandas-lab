@@ -3,7 +3,7 @@
 
 ## Introduction
 
-In this lab, you'll practice using sql statements and the .query() method provided by pandas to manipulate datasets.
+In this lab, you'll practice using SQL statements and the `.query()` method provided by pandas to manipulate datasets.
 
 ## Objectives
 
@@ -11,7 +11,7 @@ You will be able to:
 
 * Query DataFrames with SQL using the `pandasql` library
 * Query DataFrames by slicing with conditional logic
-* Use the query method to access data
+* Use the `.query()` method to access data
 
 ## The Dataset
 
@@ -37,7 +37,14 @@ One of the most common ways to query data with pandas is to simply slice the Dat
 
 In the cell below, slice the DataFrame so that it only contains passengers with 2nd or 3rd class tickets (denoted by the `Pclass` column). 
 
-**_Hint_**: Remember, your conditional logic must be passed into the slicing operator to return a slice of the DataFrame--otherwise, it will just return a table of boolean values based on the conditional statement!
+Be sure to preview values first to ensure proper encoding when slicing
+
+- **_Hint_**: Remember, your conditional logic must be passed into the slicing operator to return a slice of the DataFrame--otherwise, it will just return a table of boolean values based on the conditional statement!
+
+
+```python
+#Preview values first to ensure proper encoding when slicing
+```
 
 
 ```python
@@ -53,9 +60,40 @@ In the cell below, slice the DataFrame so that it only contains passengers with 
 fares_50_to_100_df = None
 ```
 
+We could go further and then preview the Fare column of this new subsetted DataFrame:
+
+
+```python
+fares_50_to_100_df.Fare.hist()
+plt.xlabel('Fare', color='red')
+plt.ylabel('Frequency', fontsize=12) 
+plt.title('Distribution of Fares')
+```
+
+
+
+
+    Text(0.5, 1.0, 'Distribution of Fares')
+
+
+
+
+![png](index_files/index_10_1.png)
+
+
 Remember that there are two syntactically correct ways to access a column in a DataFrame.  For instance, `df['Name']` and `df.Name` return the same thing.  
 
-In the cell below, use the dot notation syntax and slice a DataFrame that contains male passengers that survived that also belong to Pclass 2 or 3.
+In the cell below, use the dot notation syntax and slice a DataFrame that contains male passengers that survived that also belong to Pclass 2 or 3. Be sure to preview the column names and content of the `Sex` column.
+
+
+```python
+# Checking column names for reference
+```
+
+
+```python
+# Checking Column values to hardcode query below
+```
 
 
 ```python
@@ -69,9 +107,9 @@ Great! Now that you've reviewed the methods for slicing a DataFrame for querying
 
 In this section, you're looking to investigate whether women and children survived more than men, or that rich passengers were more likely to survive than poor passengers.  The easiest way to confirm this is to slice the data into DataFrames that contain each subgroup, and then quickly visualize the survival rate of each subgroup with histograms.
 
-In the cell below, create a DataFrame that contains passengers that are female, as well as children (males included) under the age of 15 (exclusive).   
+In the cell below, create a DataFrame that contains passengers that are female, as well as children (males included) ages 15 and under.   
 
-Additionally, create a DataFrame that contains only male passengers of all ages.  
+Additionally, create a DataFrame that contains only adult male passengers over the age of 15.  
 
 
 ```python
@@ -83,9 +121,14 @@ Great! Now, you can use the `matplotlib` functionality built into the DataFrame 
 
 In the cell below, create histogram visualizations of the `Survived` column for both DataFrames.  Bonus points if you use `plt.title()` to label them correctly and make it easy to tell them apart!
 
+
+```python
+# Your code here
+```
+
 Well that seems like a pretty stark difference--it seems that there was drastically different behavior between the groups!  Now, let's repeat the same process, but separating rich and poor passengers.  
 
-In the cell below, create one DataFrame containing Fist Class passengers (`Pclass == 1`), and another DataFrame containing everyone else.
+In the cell below, create one DataFrame containing First Class passengers (`Pclass == 1`), and another DataFrame containing everyone else.
 
 
 ```python
@@ -94,6 +137,11 @@ second_third_class_df = None
 ```
 
 Now, create histograms of the surivival for each subgroup, just as you did above.  
+
+
+```python
+# Your code here
+```
 
 To the surprise of absolutely no one, it seems like First Class passengers were more likely to survive than not, while 2nd and 3rd class passengers were more likely to die than not.  However, don't read too far into these graphs, as these aren't at the same scale, so they aren't fair comparisons.  
 
@@ -114,9 +162,9 @@ high_passenger_number_df = None
 
 Just as with slicing, you can pass in queries with multiple conditions.  One unique difference between using the `.query()` method and conditional slicing is that you can use `and` or `&` as well as `or` or `|` (for fun, try reading this last sentence out loud), while you are limited to the `&` and `|` symbols to denote and/or operations with conditional slicing.  
 
-In the cell below, use the `query()` method to return a DataFrame that contains only female passengers under the age of 15 (exclusive). 
+In the cell below, use the `query()` method to return a DataFrame that contains only female passengers of ages 15 and under. 
 
-**_Hint_**: Although the entire query is a string, you'll still need to denote that `female` is also a string, within the string.  (String-Ception?)
+**_Hint_**: Although the entire query is a string, you'll still need to denote that `female` is also a string, within the string.  (_String-Ception?_)
 
 
 ```python
@@ -136,7 +184,7 @@ In the cell below, use the DataFrame's `eval()` method in place to add a column 
 
 
 ```python
-
+# df = 
 # df.head()
 ```
 
@@ -146,20 +194,25 @@ Great! Now, let's move on the coolest part of this lab--querying DataFrames with
 
 For the final section of the lab, you'll make use of the `pandasql` library.  Pandasql is a library designed to make it easy to query DataFrames directly with SQL syntax, which was open-sourced by the company Yhat in late 2016.  It's very straightforward to use, but you are still encouraged to take a look at the [documentation](https://github.com/yhat/pandasql) as needed.  
 
-If you're using the prebuilt virtual environment, you should already have the package ready to import. If not, run the cell below to pip install pandasql so that it is available to import.
+If you're using the prebuilt virtual environment, you should already have the package ready to import. If not, uncomment and run the cell below to pip install pandasql so that it is available to import.
 
 
 ```python
-!pip install pandasql
+# !pip install pandasql
 ```
 
 That should have installed everything correctly. This library has a few dependencies, which you should already have installed. If you don't, just `pip install` them in your terminal and you'll be good to go!
 
 In the cell below, import `sqldf` from `pandasql`.
 
+
+```python
+# Your code here
+```
+
 Great! Now, it's time get some practice with this handy library.
 
-`pandasql` allows you to pass in SQL queries in the form of a string to directly query our database.  Each time you make a query, you need pass an additional parameter that gives it access to the other variables in the session/environment. You can use a lambda function to pass `locals()` or `globals()` so that you don't have to type this every time.  
+`pandasql` allows you to pass in SQL queries in the form of a string to directly query your database.  Each time you make a query, you need pass an additional parameter that gives it access to the other variables in the session/environment. You can use a lambda function to pass `locals()` or `globals()` so that you don't have to type this every time.  
 
 In the cell below, create a variable called `pysqldf` and set it equal to a lambda function `q` that returns `sqldf(q, globals())`.  If you're unsure of how to do this, see the example in the [documentation](https://github.com/yhat/pandasql).
 
@@ -200,7 +253,7 @@ sql_surviving_males = None
 sql_surviving_males
 ```
 
-This library is really powerful! This makes it easy for us to leverage all of SQL knowledge to quickly query any DataFrame, especially when you only want to select certain columns.  This saves from having to slice/query the DataFrame and then slice the columns you want (or drop the ones you don't want).
+This library is really powerful! This makes it easy for us to leverage all of your SQL knowledge to quickly query any DataFrame, especially when you only want to select certain columns.  This saves from having to slice/query the DataFrame and then slice the columns you want (or drop the ones you don't want).
 
 Although it's outside the scope of this lab, it's also worth noting that both `pandas` and `pandasql` provide built-in functionality for join operations, too!
 
