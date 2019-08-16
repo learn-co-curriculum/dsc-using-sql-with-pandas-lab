@@ -15,7 +15,7 @@ You will be able to:
 
 ## The Dataset
 
-In this lab we will continue working with the _Titanic Survivors_ Dataset
+In this lab we will continue working with the _Titanic Survivors_ dataset.
 
 Begin by importing `pandas` as `pd`, `numpy` as `np`, and `matplotlib.pyplot` as `plt`, and set the appropriate alias for each. Additionally, set `%matplotlib inline`.
 
