@@ -3,7 +3,7 @@
 
 ## Introduction
 
-In this lab, you'll practice using SQL statements and the `.query()` method provided by pandas to manipulate datasets.
+In this lab, you will practice using SQL statements and the `.query()` method provided by pandas to manipulate datasets.
 
 ## Objectives
 
