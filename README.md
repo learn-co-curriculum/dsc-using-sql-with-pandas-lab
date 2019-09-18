@@ -15,7 +15,7 @@ You will be able to:
 
 ## The Dataset
 
-In this lab we will continue working with the _Titanic Survivors_ dataset.
+In this lab, we will continue working with the _Titanic Survivors_ dataset.
 
 Begin by importing `pandas` as `pd`, `numpy` as `np`, and `matplotlib.pyplot` as `plt`, and set the appropriate alias for each. Additionally, set `%matplotlib inline`.
 
@@ -793,7 +793,7 @@ Slicing is a useful method for quickly getting DataFrames that contain only the 
 
 ## Using the `.query()` method
 
-Instead of slicing, you can also make use of the DataFrame's built-in `.query()` method.  This method reads a bit cleaner, and allows us to pass in our arguments as a string.  For more information or example code on how to use this method, see the [pandas documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.query.html).
+Instead of slicing, you can also make use of the DataFrame's built-in `.query()` method.  This method reads a bit more cleanly and allows us to pass in our arguments as a string.  For more information or example code on how to use this method, see the [pandas documentation](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.query.html).
 
 In the cell below, use the `.query()` method to slice a DataFrame that contains only passengers who have a `PassengerId` greater than or equal to 500. 
 
@@ -1267,9 +1267,9 @@ In the cell below, import `sqldf` from `pandasql`.
 from pandasql import sqldf
 ```
 
-Great! Now, it's time get some practice with this handy library.
+Great! Now, it's time to get some practice with this handy library.
 
-`pandasql` allows you to pass in SQL queries in the form of a string to directly query your database.  Each time you make a query, you need pass an additional parameter that gives it access to the other variables in the session/environment. You can use a lambda function to pass `locals()` or `globals()` so that you don't have to type this every time.  
+`pandasql` allows you to pass in SQL queries in the form of a string to directly query your database.  Each time you make a query, you need to pass an additional parameter that gives it access to the other variables in the session/environment. You can use a lambda function to pass `locals()` or `globals()` so that you don't have to type this every time.  
 
 In the cell below, create a variable called `pysqldf` and set it equal to a lambda function `q` that returns `sqldf(q, globals())`.  If you're unsure of how to do this, see the example in the [documentation](https://github.com/yhat/pandasql).
 
