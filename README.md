@@ -3,15 +3,14 @@
 
 ## Introduction
 
-In this lab, you will practice using SQL statements and the `.query()` method provided by pandas to manipulate datasets.
+In this lab, you will practice using SQL statements and the `.query()` method provided by Pandas to manipulate datasets.
 
 ## Objectives
 
 You will be able to:
 
+* Compare accessing data in a DataFrame using query methods and conditional logic
 * Query DataFrames with SQL using the `pandasql` library
-* Query DataFrames by slicing with conditional logic
-* Use the `.query()` method to access data
 
 ## The Dataset
 
@@ -192,9 +191,9 @@ Great! Now, let's move on the coolest part of this lab--querying DataFrames with
 
 ## Querying DataFrames With SQL
 
-For the final section of the lab, you'll make use of the `pandasql` library.  Pandasql is a library designed to make it easy to query DataFrames directly with SQL syntax, which was open-sourced by the company Yhat in late 2016.  It's very straightforward to use, but you are still encouraged to take a look at the [documentation](https://github.com/yhat/pandasql) as needed.  
+For the final section of the lab, you'll make use of the `pandasql` library.  Pandasql is a library designed to make it easy to query DataFrames directly with SQL syntax, which was open-sourced by the company, Yhat, in late 2016.  It's very straightforward to use, but you are still encouraged to take a look at the [documentation](https://github.com/yhat/pandasql) as needed.  
 
-If you're using the prebuilt virtual environment, you should already have the package ready to import. If not, uncomment and run the cell below to pip install pandasql so that it is available to import.
+If you're using the pre-built virtual environment, you should already have the package ready to import. If not, uncomment and run the cell below to `pip install pandasql` so that it is available to import.
 
 
 ```python
