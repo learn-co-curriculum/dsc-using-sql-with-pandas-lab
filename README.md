@@ -20,7 +20,7 @@ Begin by importing `pandas` as `pd`, `numpy` as `np`, and `matplotlib.pyplot` as
 
 
 ```python
-#Your code here
+# Your code here
 ```
 
 
@@ -42,7 +42,7 @@ df = None
 
 ```python
 # __SOLUTION__ 
-df = pd.read_csv('titanic.csv')
+df = pd.read_csv('titanic.csv', index_col=0)
 df.head()
 ```
 
@@ -67,7 +67,6 @@ df.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Unnamed: 0</th>
       <th>PassengerId</th>
       <th>Survived</th>
       <th>Pclass</th>
@@ -85,7 +84,6 @@ df.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>0</td>
       <td>1</td>
       <td>0</td>
       <td>3</td>
@@ -101,7 +99,6 @@ df.head()
     </tr>
     <tr>
       <th>1</th>
-      <td>1</td>
       <td>2</td>
       <td>1</td>
       <td>1</td>
@@ -117,7 +114,6 @@ df.head()
     </tr>
     <tr>
       <th>2</th>
-      <td>2</td>
       <td>3</td>
       <td>1</td>
       <td>3</td>
@@ -133,7 +129,6 @@ df.head()
     </tr>
     <tr>
       <th>3</th>
-      <td>3</td>
       <td>4</td>
       <td>1</td>
       <td>1</td>
@@ -149,7 +144,6 @@ df.head()
     </tr>
     <tr>
       <th>4</th>
-      <td>4</td>
       <td>5</td>
       <td>0</td>
       <td>3</td>
@@ -181,14 +175,14 @@ Be sure to preview values first to ensure proper encoding when slicing
 
 
 ```python
-#Preview values first to ensure proper encoding when slicing
+# Preview values first to ensure proper encoding when slicing
 ```
 
 
 ```python
 # __SOLUTION__ 
-#Preview values first to ensure proper encoding when slicing
-df.Pclass.unique() 
+# Preview values first to ensure proper encoding when slicing
+df['Pclass'].unique() 
 ```
 
 
@@ -206,7 +200,7 @@ no_first_class_df = None
 
 ```python
 # __SOLUTION__ 
-no_first_class_df = df[df.Pclass.isin(['2','3'])]
+no_first_class_df = df[df['Pclass'].isin(['2','3'])]
 no_first_class_df.head()
 ```
 
@@ -231,7 +225,6 @@ no_first_class_df.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Unnamed: 0</th>
       <th>PassengerId</th>
       <th>Survived</th>
       <th>Pclass</th>
@@ -249,7 +242,6 @@ no_first_class_df.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>0</td>
       <td>1</td>
       <td>0</td>
       <td>3</td>
@@ -265,7 +257,6 @@ no_first_class_df.head()
     </tr>
     <tr>
       <th>2</th>
-      <td>2</td>
       <td>3</td>
       <td>1</td>
       <td>3</td>
@@ -281,7 +272,6 @@ no_first_class_df.head()
     </tr>
     <tr>
       <th>4</th>
-      <td>4</td>
       <td>5</td>
       <td>0</td>
       <td>3</td>
@@ -297,7 +287,6 @@ no_first_class_df.head()
     </tr>
     <tr>
       <th>5</th>
-      <td>5</td>
       <td>6</td>
       <td>0</td>
       <td>3</td>
@@ -313,7 +302,6 @@ no_first_class_df.head()
     </tr>
     <tr>
       <th>7</th>
-      <td>7</td>
       <td>8</td>
       <td>0</td>
       <td>3</td>
@@ -345,7 +333,7 @@ fares_50_to_100_df = None
 
 ```python
 # __SOLUTION__ 
-fares_50_to_100_df = df[(df['Fare'] >=50) & (df['Fare']<=100)]
+fares_50_to_100_df = df[(df['Fare'] >= 50) & (df['Fare'] <= 100)]
 fares_50_to_100_df.head()
 ```
 
@@ -370,7 +358,6 @@ fares_50_to_100_df.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Unnamed: 0</th>
       <th>PassengerId</th>
       <th>Survived</th>
       <th>Pclass</th>
@@ -388,7 +375,6 @@ fares_50_to_100_df.head()
   <tbody>
     <tr>
       <th>1</th>
-      <td>1</td>
       <td>2</td>
       <td>1</td>
       <td>1</td>
@@ -404,7 +390,6 @@ fares_50_to_100_df.head()
     </tr>
     <tr>
       <th>3</th>
-      <td>3</td>
       <td>4</td>
       <td>1</td>
       <td>1</td>
@@ -420,7 +405,6 @@ fares_50_to_100_df.head()
     </tr>
     <tr>
       <th>6</th>
-      <td>6</td>
       <td>7</td>
       <td>0</td>
       <td>1</td>
@@ -436,7 +420,6 @@ fares_50_to_100_df.head()
     </tr>
     <tr>
       <th>34</th>
-      <td>34</td>
       <td>35</td>
       <td>0</td>
       <td>1</td>
@@ -452,7 +435,6 @@ fares_50_to_100_df.head()
     </tr>
     <tr>
       <th>35</th>
-      <td>35</td>
       <td>36</td>
       <td>0</td>
       <td>1</td>
@@ -476,21 +458,23 @@ We could go further and then preview the Fare column of this new subsetted DataF
 
 
 ```python
-fares_50_to_100_df.Fare.hist()
+fares_50_to_100_df['Fare'].hist()
 plt.xlabel('Fare', color='red')
 plt.ylabel('Frequency', fontsize=12) 
-plt.title('Distribution of Fares')
+plt.title('Distribution of Fares');
 ```
 
 
+```python
+# __SOLUTION__ 
+fares_50_to_100_df['Fare'].hist()
+plt.xlabel('Fare', color='red')
+plt.ylabel('Frequency', fontsize=12) 
+plt.title('Distribution of Fares');
+```
 
 
-    Text(0.5, 1.0, 'Distribution of Fares')
-
-
-
-
-![png](index_files/index_15_1.png)
+![png](index_files/index_16_0.png)
 
 
 Remember that there are two syntactically correct ways to access a column in a DataFrame.  For instance, `df['Name']` and `df.Name` return the same thing.  
@@ -512,22 +496,22 @@ df.columns
 
 
 
-    Index(['Unnamed: 0', 'PassengerId', 'Survived', 'Pclass', 'Name', 'Sex', 'Age',
-           'SibSp', 'Parch', 'Ticket', 'Fare', 'Cabin', 'Embarked'],
+    Index(['PassengerId', 'Survived', 'Pclass', 'Name', 'Sex', 'Age', 'SibSp',
+           'Parch', 'Ticket', 'Fare', 'Cabin', 'Embarked'],
           dtype='object')
 
 
 
 
 ```python
-# Checking Column values to hardcode query below
+# Checking column values to hardcode query below
 ```
 
 
 ```python
 # __SOLUTION__ 
-# Checking Column values to hardcode query below
-df.Sex.unique() 
+# Checking column values to hardcode query below
+df['Sex'].unique() 
 ```
 
 
@@ -545,7 +529,7 @@ poor_male_survivors_df = None
 
 ```python
 # __SOLUTION__ 
-poor_male_survivors_df = df[(df.Pclass.isin(['2', '3'])) & (df.Sex == 'male')]
+poor_male_survivors_df = df[(df['Pclass'].isin(['2', '3'])) & (df['Sex'] == 'male')]
 poor_male_survivors_df.head()
 ```
 
@@ -570,7 +554,6 @@ poor_male_survivors_df.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Unnamed: 0</th>
       <th>PassengerId</th>
       <th>Survived</th>
       <th>Pclass</th>
@@ -588,7 +571,6 @@ poor_male_survivors_df.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>0</td>
       <td>1</td>
       <td>0</td>
       <td>3</td>
@@ -604,7 +586,6 @@ poor_male_survivors_df.head()
     </tr>
     <tr>
       <th>4</th>
-      <td>4</td>
       <td>5</td>
       <td>0</td>
       <td>3</td>
@@ -620,7 +601,6 @@ poor_male_survivors_df.head()
     </tr>
     <tr>
       <th>5</th>
-      <td>5</td>
       <td>6</td>
       <td>0</td>
       <td>3</td>
@@ -636,7 +616,6 @@ poor_male_survivors_df.head()
     </tr>
     <tr>
       <th>7</th>
-      <td>7</td>
       <td>8</td>
       <td>0</td>
       <td>3</td>
@@ -652,7 +631,6 @@ poor_male_survivors_df.head()
     </tr>
     <tr>
       <th>12</th>
-      <td>12</td>
       <td>13</td>
       <td>0</td>
       <td>3</td>
@@ -686,15 +664,14 @@ Additionally, create a DataFrame that contains only adult male passengers over t
 
 ```python
 women_and_children_df = None
-male_all_ages_df = None
+adult_males_df = None
 ```
 
 
 ```python
 # __SOLUTION__ 
-women_and_children_df = df[(df.Sex == 'female') | (df.Age <= 15)]
-
-male_all_ages_df = df[(df.Sex == 'male') & (df.Age > 15)]
+women_and_children_df = df[(df['Sex'] == 'female') | (df['Age'] <= 15)]
+adult_males_df = df[(df['Sex'] == 'male') & (df['Age'] > 15)]
 ```
 
 Great! Now, you can use the `matplotlib` functionality built into the DataFrame objects to quickly create visualizations of the `Survived` column for each DataFrame.  
@@ -709,32 +686,25 @@ In the cell below, create histogram visualizations of the `Survived` column for 
 
 ```python
 # __SOLUTION__ 
-fig, axes = plt.subplots(ncols=2, nrows=1, figsize=(18, 8)) #Two figures side by side
+fig, axes = plt.subplots(ncols=2, nrows=1, figsize=(18, 8)) # Two figures side by side
 ax_lft = axes[0]
-male_all_ages_df.Survived.hist(ax=ax_lft)
+adult_males_df['Survived'].hist(ax=ax_lft)
 ax_lft.set_title('Male Adults (over 15)')
 ax_lft.set_xlabel('Survived?')
 ax_lft.set_ylabel('Count')
 
 ax_rght = axes[1]
-women_and_children_df.Survived.hist(ax=ax_rght, color='pink')
+women_and_children_df['Survived'].hist(ax=ax_rght, color='pink')
 ax_rght.set_title('Women and Children (15 and under)')
 ax_rght.set_xlabel('Survived?')
-ax_rght.set_ylabel('Count')
+ax_rght.set_ylabel('Count');
 ```
 
 
+![png](index_files/index_29_0.png)
 
 
-    Text(0, 0.5, 'Count')
-
-
-
-
-![png](index_files/index_28_1.png)
-
-
-Well that seems like a pretty stark difference--it seems that there was drastically different behavior between the groups!  Now, let's repeat the same process, but separating rich and poor passengers.  
+Well that seems like a pretty stark difference -- it seems that there was drastically different behavior between the groups!  Now, let's repeat the same process, but separating rich and poor passengers.  
 
 In the cell below, create one DataFrame containing First Class passengers (`Pclass == 1`), and another DataFrame containing everyone else.
 
@@ -747,8 +717,8 @@ second_third_class_df = None
 
 ```python
 # __SOLUTION__ 
-first_class_df = df[df.Pclass=='1']
-second_third_class_df = df[df.Pclass!='1']
+first_class_df = df[df['Pclass'] == '1']
+second_third_class_df = df[df['Pclass'] != '1']
 ```
 
 Now, create histograms of the surivival for each subgroup, just as you did above.  
@@ -761,29 +731,22 @@ Now, create histograms of the surivival for each subgroup, just as you did above
 
 ```python
 # __SOLUTION__ 
-fig, axes = plt.subplots(ncols=2, nrows=1, figsize=(18, 8)) #Two figures side by side
+fig, axes = plt.subplots(ncols=2, nrows=1, figsize=(18, 8)) # Two figures side by side
 ax_lft = axes[0]
-first_class_df.Survived.hist(ax=ax_lft, color='gold')
+first_class_df['Survived'].hist(ax=ax_lft, color='gold')
 ax_lft.set_title('First Class')
 ax_lft.set_xlabel('Survived?')
 ax_lft.set_ylabel('Count')
 
 ax_rght = axes[1]
-second_third_class_df.Survived.hist(ax=ax_rght, color='grey')
+second_third_class_df['Survived'].hist(ax=ax_rght, color='grey')
 ax_rght.set_title('Everyone Else')
 ax_rght.set_xlabel('Survived?')
-ax_rght.set_ylabel('Count')
+ax_rght.set_ylabel('Count');
 ```
 
 
-
-
-    Text(0, 0.5, 'Count')
-
-
-
-
-![png](index_files/index_34_1.png)
+![png](index_files/index_35_0.png)
 
 
 To the surprise of absolutely no one, it seems like First Class passengers were more likely to survive than not, while 2nd and 3rd class passengers were more likely to die than not.  However, don't read too far into these graphs, as these aren't at the same scale, so they aren't fair comparisons.  
@@ -800,7 +763,7 @@ In the cell below, use the `.query()` method to slice a DataFrame that contains 
 ```python
 query_string = None
 high_passenger_number_df = None
-# high_passenger_number_df.head()
+high_passenger_number_df.head()
 ```
 
 
@@ -836,7 +799,6 @@ high_passenger_number_df.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Unnamed: 0</th>
       <th>PassengerId</th>
       <th>Survived</th>
       <th>Pclass</th>
@@ -854,7 +816,6 @@ high_passenger_number_df.head()
   <tbody>
     <tr>
       <th>499</th>
-      <td>499</td>
       <td>500</td>
       <td>0</td>
       <td>3</td>
@@ -870,7 +831,6 @@ high_passenger_number_df.head()
     </tr>
     <tr>
       <th>500</th>
-      <td>500</td>
       <td>501</td>
       <td>0</td>
       <td>3</td>
@@ -886,7 +846,6 @@ high_passenger_number_df.head()
     </tr>
     <tr>
       <th>501</th>
-      <td>501</td>
       <td>502</td>
       <td>0</td>
       <td>3</td>
@@ -902,7 +861,6 @@ high_passenger_number_df.head()
     </tr>
     <tr>
       <th>502</th>
-      <td>502</td>
       <td>503</td>
       <td>0</td>
       <td>3</td>
@@ -918,7 +876,6 @@ high_passenger_number_df.head()
     </tr>
     <tr>
       <th>503</th>
-      <td>503</td>
       <td>504</td>
       <td>0</td>
       <td>3</td>
@@ -947,13 +904,13 @@ In the cell below, use the `query()` method to return a DataFrame that contains 
 
 ```python
 female_children_df = None
-# female_children_df.head()
+female_children_df.head()
 ```
 
 
 ```python
 # __SOLUTION__ 
-female_children_df = df.query("Sex == 'female' or Age <= 15")
+female_children_df = df.query("Sex == 'female' and Age <= 15")
 female_children_df.head()
 ```
 
@@ -978,7 +935,6 @@ female_children_df.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Unnamed: 0</th>
       <th>PassengerId</th>
       <th>Survived</th>
       <th>Pclass</th>
@@ -995,82 +951,77 @@ female_children_df.head()
   </thead>
   <tbody>
     <tr>
-      <th>1</th>
+      <th>9</th>
+      <td>10</td>
       <td>1</td>
       <td>2</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>Nasser, Mrs. Nicholas (Adele Achem)</td>
       <td>female</td>
-      <td>38.0</td>
+      <td>14.0</td>
       <td>1</td>
       <td>0</td>
-      <td>PC 17599</td>
-      <td>71.2833</td>
-      <td>C85</td>
+      <td>237736</td>
+      <td>30.0708</td>
+      <td>NaN</td>
       <td>C</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>2</td>
-      <td>3</td>
+      <th>10</th>
+      <td>11</td>
       <td>1</td>
       <td>3</td>
-      <td>Heikkinen, Miss. Laina</td>
+      <td>Sandstrom, Miss. Marguerite Rut</td>
       <td>female</td>
-      <td>26.0</td>
+      <td>4.0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>PP 9549</td>
+      <td>16.7000</td>
+      <td>G6</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+      <td>0</td>
+      <td>3</td>
+      <td>Vestrom, Miss. Hulda Amanda Adolfina</td>
+      <td>female</td>
+      <td>14.0</td>
       <td>0</td>
       <td>0</td>
-      <td>STON/O2. 3101282</td>
-      <td>7.9250</td>
+      <td>350406</td>
+      <td>7.8542</td>
       <td>NaN</td>
       <td>S</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>22</th>
+      <td>23</td>
+      <td>1</td>
       <td>3</td>
-      <td>4</td>
-      <td>1</td>
-      <td>1</td>
-      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+      <td>McGowan, Miss. Anna "Annie"</td>
       <td>female</td>
-      <td>35.0</td>
-      <td>1</td>
+      <td>15.0</td>
       <td>0</td>
-      <td>113803</td>
-      <td>53.1000</td>
-      <td>C123</td>
-      <td>S</td>
+      <td>0</td>
+      <td>330923</td>
+      <td>8.0292</td>
+      <td>NaN</td>
+      <td>Q</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>7</td>
-      <td>8</td>
+      <th>24</th>
+      <td>25</td>
       <td>0</td>
       <td>3</td>
-      <td>Palsson, Master. Gosta Leonard</td>
-      <td>male</td>
-      <td>2.0</td>
+      <td>Palsson, Miss. Torborg Danira</td>
+      <td>female</td>
+      <td>8.0</td>
       <td>3</td>
       <td>1</td>
       <td>349909</td>
       <td>21.0750</td>
-      <td>NaN</td>
-      <td>S</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>8</td>
-      <td>9</td>
-      <td>1</td>
-      <td>3</td>
-      <td>Johnson, Mrs. Oscar W (Elisabeth Vilhelmina Berg)</td>
-      <td>female</td>
-      <td>27.0</td>
-      <td>0</td>
-      <td>2</td>
-      <td>347742</td>
-      <td>11.1333</td>
       <td>NaN</td>
       <td>S</td>
     </tr>
@@ -1092,8 +1043,8 @@ In the cell below, use the DataFrame's `eval()` method in place to add a column 
 
 
 ```python
-# df = 
-# df.head()
+df = None
+df.head()
 ```
 
 
@@ -1124,7 +1075,6 @@ df.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Unnamed: 0</th>
       <th>PassengerId</th>
       <th>Survived</th>
       <th>Pclass</th>
@@ -1143,7 +1093,6 @@ df.head()
   <tbody>
     <tr>
       <th>0</th>
-      <td>0</td>
       <td>1</td>
       <td>0</td>
       <td>3</td>
@@ -1160,7 +1109,6 @@ df.head()
     </tr>
     <tr>
       <th>1</th>
-      <td>1</td>
       <td>2</td>
       <td>1</td>
       <td>1</td>
@@ -1177,7 +1125,6 @@ df.head()
     </tr>
     <tr>
       <th>2</th>
-      <td>2</td>
       <td>3</td>
       <td>1</td>
       <td>3</td>
@@ -1194,7 +1141,6 @@ df.head()
     </tr>
     <tr>
       <th>3</th>
-      <td>3</td>
       <td>4</td>
       <td>1</td>
       <td>1</td>
@@ -1211,7 +1157,6 @@ df.head()
     </tr>
     <tr>
       <th>4</th>
-      <td>4</td>
       <td>5</td>
       <td>0</td>
       <td>3</td>
@@ -1285,8 +1230,9 @@ pysqldf = lambda q: sqldf(q, globals())
 
 Great! That will save you from having to pass `globals()` as an argument every time you query, which can get a bit tedious.  
 
-Now write a basic query to get a list of passenger names from `df`, limit 10.  If you would prefer to format your query on multiple lines and style it as canonical SQL, that's fine--remember that multi-line strings in python are denoted by `"""`--for example:
-```
+Now write a basic query to get a list of passenger names from `df`, limit 10.  If you would prefer to format your query on multiple lines and style it as canonical SQL, that's fine -- remember that multi-line strings in Python are denoted by `"""` -- for example: 
+
+``` 
 """
 This is a 
 Multi-Line String
@@ -1306,7 +1252,9 @@ passenger_names
 
 ```python
 # __SOLUTION__ 
-q = "SELECT Name FROM df LIMIT 10"
+q = """SELECT Name 
+       FROM df 
+       LIMIT 10;"""
 
 passenger_names = pysqldf(q)
 passenger_names
@@ -1398,7 +1346,10 @@ sql_surviving_males
 
 ```python
 # __SOLUTION__ 
-q2 = "SELECT Name, Fare FROM df WHERE Sex = 'male' AND Survived = 1 LIMIT 30;"
+q2 = """SELECT Name, Fare 
+        FROM df 
+        WHERE Sex = 'male' AND Survived = 1 
+        LIMIT 30;"""
 
 sql_surviving_males = pysqldf(q)
 sql_surviving_males
@@ -1496,14 +1447,21 @@ survived_females_by_pclass_df = None
 died_females_by_pclass_df = None
 
 # Create and label the histograms for each below!
+
 ```
 
 
 ```python
 # __SOLUTION__ 
 # Write your queries in these variables to keep your code well-formatted and readable
-q3 = "SELECT Pclass, Count(*) from df where Sex = 'female' and Survived = 1 group by 1;"
-q4 = "SELECT Pclass, Count(*) from df where Sex = 'female' and Survived = 0 group by 1;"
+q3 = """SELECT Pclass, Count(*) 
+        FROM df 
+        WHERE Sex = 'female' AND Survived = 1 
+        GROUP BY Pclass;"""
+q4 = """SELECT Pclass, Count(*) 
+        FROM df 
+        WHERE Sex = 'female' AND Survived = 0 
+        GROUP BY Pclass;"""
 
 survived_females_by_pclass_df = pysqldf(q3)
 died_females_by_pclass_df = pysqldf(q4)
@@ -1515,7 +1473,7 @@ survived_females_by_pclass_df.set_index('Pclass')['Count(*)'].plot(kind='barh', 
 axes[0].set_title('Distribution of Classes for Female Survivors')
 
 died_females_by_pclass_df.set_index('Pclass')['Count(*)'].plot(kind='barh', ax=axes[1])
-axes[1].set_title('Distribution of Classes for Female Casualties')
+axes[1].set_title('Distribution of Classes for Female Casualties');
 ```
 
 
@@ -1526,7 +1484,7 @@ axes[1].set_title('Distribution of Classes for Female Casualties')
 
 
 
-![png](index_files/index_63_1.png)
+![png](index_files/index_64_1.png)
 
 
 ## Summary
