@@ -20,7 +20,7 @@ Begin by importing `pandas` as `pd`, `numpy` as `np`, and `matplotlib.pyplot` as
 
 
 ```python
-#Your code here
+# Your code here
 ```
 
 Next, read in the data from `titanic.csv` and store it as a DataFrame in `df`. Display the `.head()` to ensure that everything loaded correctly.
@@ -42,7 +42,7 @@ Be sure to preview values first to ensure proper encoding when slicing
 
 
 ```python
-#Preview values first to ensure proper encoding when slicing
+# Preview values first to ensure proper encoding when slicing
 ```
 
 
@@ -63,22 +63,11 @@ We could go further and then preview the Fare column of this new subsetted DataF
 
 
 ```python
-fares_50_to_100_df.Fare.hist()
+fares_50_to_100_df['Fare'].hist()
 plt.xlabel('Fare', color='red')
 plt.ylabel('Frequency', fontsize=12) 
-plt.title('Distribution of Fares')
+plt.title('Distribution of Fares');
 ```
-
-
-
-
-    Text(0.5, 1.0, 'Distribution of Fares')
-
-
-
-
-![png](index_files/index_10_1.png)
-
 
 Remember that there are two syntactically correct ways to access a column in a DataFrame.  For instance, `df['Name']` and `df.Name` return the same thing.  
 
@@ -91,7 +80,7 @@ In the cell below, use the dot notation syntax and slice a DataFrame that contai
 
 
 ```python
-# Checking Column values to hardcode query below
+# Checking column values to hardcode query below
 ```
 
 
@@ -113,7 +102,7 @@ Additionally, create a DataFrame that contains only adult male passengers over t
 
 ```python
 women_and_children_df = None
-male_all_ages_df = None
+adult_males_df = None
 ```
 
 Great! Now, you can use the `matplotlib` functionality built into the DataFrame objects to quickly create visualizations of the `Survived` column for each DataFrame.  
@@ -125,7 +114,7 @@ In the cell below, create histogram visualizations of the `Survived` column for 
 # Your code here
 ```
 
-Well that seems like a pretty stark difference--it seems that there was drastically different behavior between the groups!  Now, let's repeat the same process, but separating rich and poor passengers.  
+Well that seems like a pretty stark difference -- it seems that there was drastically different behavior between the groups!  Now, let's repeat the same process, but separating rich and poor passengers.  
 
 In the cell below, create one DataFrame containing First Class passengers (`Pclass == 1`), and another DataFrame containing everyone else.
 
@@ -156,7 +145,7 @@ In the cell below, use the `.query()` method to slice a DataFrame that contains 
 ```python
 query_string = None
 high_passenger_number_df = None
-# high_passenger_number_df.head()
+high_passenger_number_df.head()
 ```
 
 Just as with slicing, you can pass in queries with multiple conditions.  One unique difference between using the `.query()` method and conditional slicing is that you can use `and` or `&` as well as `or` or `|` (for fun, try reading this last sentence out loud), while you are limited to the `&` and `|` symbols to denote and/or operations with conditional slicing.  
@@ -168,7 +157,7 @@ In the cell below, use the `query()` method to return a DataFrame that contains 
 
 ```python
 female_children_df = None
-# female_children_df.head()
+female_children_df.head()
 ```
 
 A cousin of the `query()` method, `eval()` allows you to use the same string-filled syntax as querying for creating new columns.  For instance:
@@ -183,8 +172,8 @@ In the cell below, use the DataFrame's `eval()` method in place to add a column 
 
 
 ```python
-# df = 
-# df.head()
+df = None
+df.head()
 ```
 
 Great! Now, let's move on the coolest part of this lab--querying DataFrames with SQL!
@@ -222,8 +211,9 @@ pysqldf = None
 
 Great! That will save you from having to pass `globals()` as an argument every time you query, which can get a bit tedious.  
 
-Now write a basic query to get a list of passenger names from `df`, limit 10.  If you would prefer to format your query on multiple lines and style it as canonical SQL, that's fine--remember that multi-line strings in python are denoted by `"""`--for example:
-```
+Now write a basic query to get a list of passenger names from `df`, limit 10.  If you would prefer to format your query on multiple lines and style it as canonical SQL, that's fine -- remember that multi-line strings in Python are denoted by `"""` -- for example: 
+
+``` 
 """
 This is a 
 Multi-Line String
@@ -273,6 +263,7 @@ survived_females_by_pclass_df = None
 died_females_by_pclass_df = None
 
 # Create and label the histograms for each below!
+
 ```
 
 ## Summary
