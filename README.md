@@ -1210,7 +1210,7 @@ q2 = """SELECT Name, Fare
         WHERE Sex = 'male' AND Survived = 1 
         LIMIT 30;"""
 
-sql_surviving_males = pysqldf(q)
+sql_surviving_males = pysqldf(q2)
 sql_surviving_males
 ```
 
