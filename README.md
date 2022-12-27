@@ -1,4 +1,3 @@
-
 # Using SQL with Pandas - Lab
 
 ## Introduction
@@ -474,7 +473,9 @@ plt.title('Distribution of Fares');
 ```
 
 
+    
 ![png](index_files/index_16_0.png)
+    
 
 
 Remember that there are two syntactically correct ways to access a column in a DataFrame.  For instance, `df['Name']` and `df.Name` return the same thing.  
@@ -529,7 +530,7 @@ poor_male_survivors_df = None
 
 ```python
 # __SOLUTION__ 
-poor_male_survivors_df = df[(df['Pclass'].isin(['2', '3'])) & (df['Sex'] == 'male')]
+poor_male_survivors_df = df[(df['Pclass'].isin(['2', '3'])) & (df['Sex'] == 'male') & (df['Survived'] == 1)]
 poor_male_survivors_df.head()
 ```
 
@@ -570,77 +571,77 @@ poor_male_survivors_df.head()
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <th>17</th>
+      <td>18</td>
       <td>1</td>
-      <td>0</td>
-      <td>3</td>
-      <td>Braund, Mr. Owen Harris</td>
+      <td>2</td>
+      <td>Williams, Mr. Charles Eugene</td>
       <td>male</td>
-      <td>22.0</td>
-      <td>1</td>
+      <td>NaN</td>
       <td>0</td>
-      <td>A/5 21171</td>
-      <td>7.2500</td>
+      <td>0</td>
+      <td>244373</td>
+      <td>13.0000</td>
       <td>NaN</td>
       <td>S</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>5</td>
-      <td>0</td>
-      <td>3</td>
-      <td>Allen, Mr. William Henry</td>
-      <td>male</td>
-      <td>35.0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>373450</td>
-      <td>8.0500</td>
-      <td>NaN</td>
-      <td>S</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>6</td>
-      <td>0</td>
-      <td>3</td>
-      <td>Moran, Mr. James</td>
-      <td>male</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>0</td>
-      <td>330877</td>
-      <td>8.4583</td>
-      <td>NaN</td>
-      <td>Q</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>8</td>
-      <td>0</td>
-      <td>3</td>
-      <td>Palsson, Master. Gosta Leonard</td>
-      <td>male</td>
-      <td>2.0</td>
-      <td>3</td>
+      <th>21</th>
+      <td>22</td>
       <td>1</td>
-      <td>349909</td>
-      <td>21.0750</td>
-      <td>NaN</td>
+      <td>2</td>
+      <td>Beesley, Mr. Lawrence</td>
+      <td>male</td>
+      <td>34.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>248698</td>
+      <td>13.0000</td>
+      <td>D56</td>
       <td>S</td>
     </tr>
     <tr>
-      <th>12</th>
-      <td>13</td>
-      <td>0</td>
+      <th>36</th>
+      <td>37</td>
+      <td>1</td>
       <td>3</td>
-      <td>Saundercock, Mr. William Henry</td>
+      <td>Mamee, Mr. Hanna</td>
       <td>male</td>
-      <td>20.0</td>
+      <td>NaN</td>
       <td>0</td>
       <td>0</td>
-      <td>A/5. 2151</td>
-      <td>8.0500</td>
+      <td>2677</td>
+      <td>7.2292</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>66</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Moubarek, Master. Gerios</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2661</td>
+      <td>15.2458</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>75</td>
+      <td>1</td>
+      <td>3</td>
+      <td>Bing, Mr. Lee</td>
+      <td>male</td>
+      <td>32.0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1601</td>
+      <td>56.4958</td>
       <td>NaN</td>
       <td>S</td>
     </tr>
@@ -701,7 +702,9 @@ ax_rght.set_ylabel('Count');
 ```
 
 
+    
 ![png](index_files/index_29_0.png)
+    
 
 
 Well that seems like a pretty stark difference -- it seems that there was drastically different behavior between the groups!  Now, let's repeat the same process, but separating rich and poor passengers.  
@@ -746,7 +749,9 @@ ax_rght.set_ylabel('Count');
 ```
 
 
+    
 ![png](index_files/index_35_0.png)
+    
 
 
 To the surprise of absolutely no one, it seems like First Class passengers were more likely to survive than not, while 2nd and 3rd class passengers were more likely to die than not.  However, don't read too far into these graphs, as these aren't at the same scale, so they aren't fair comparisons.  
@@ -1377,48 +1382,159 @@ sql_surviving_males
     <tr style="text-align: right;">
       <th></th>
       <th>Name</th>
+      <th>Fare</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>Braund, Mr. Owen Harris</td>
+      <td>Williams, Mr. Charles Eugene</td>
+      <td>13.0000</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>Beesley, Mr. Lawrence</td>
+      <td>13.0000</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Heikkinen, Miss. Laina</td>
+      <td>Sloper, Mr. William Thompson</td>
+      <td>35.5000</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+      <td>Mamee, Mr. Hanna</td>
+      <td>7.2292</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Allen, Mr. William Henry</td>
+      <td>Woolner, Mr. Hugh</td>
+      <td>35.5000</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>Moran, Mr. James</td>
+      <td>Moubarek, Master. Gerios</td>
+      <td>15.2458</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>McCarthy, Mr. Timothy J</td>
+      <td>Bing, Mr. Lee</td>
+      <td>56.4958</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>Palsson, Master. Gosta Leonard</td>
+      <td>Caldwell, Master. Alden Gates</td>
+      <td>29.0000</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>Johnson, Mrs. Oscar W (Elisabeth Vilhelmina Berg)</td>
+      <td>Sheerlinck, Mr. Jan Baptist</td>
+      <td>9.5000</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>Nasser, Mrs. Nicholas (Adele Achem)</td>
+      <td>Greenfield, Mr. William Bertram</td>
+      <td>63.3583</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Moss, Mr. Albert Johan</td>
+      <td>7.7750</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Nicola-Yarred, Master. Elias</td>
+      <td>11.2417</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Madsen, Mr. Fridtjof Arne</td>
+      <td>7.1417</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Andersson, Mr. August Edvard ("Wennerstrom")</td>
+      <td>7.7958</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Goldsmith, Master. Frank John William "Frankie"</td>
+      <td>20.5250</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Becker, Master. Richard F</td>
+      <td>39.0000</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Romaine, Mr. Charles Hallace ("Mr C Rolmane")</td>
+      <td>26.5500</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Navratil, Master. Michel M</td>
+      <td>26.0000</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Cohen, Mr. Gurshon "Gus"</td>
+      <td>8.0500</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Albimona, Mr. Nassef Cassem</td>
+      <td>18.7875</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Blank, Mr. Henry</td>
+      <td>31.0000</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Sunderland, Mr. Victor Francis</td>
+      <td>8.0500</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Hoyt, Mr. Frederick Maxfield</td>
+      <td>90.0000</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Mellors, Mr. William John</td>
+      <td>10.5000</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Beckwith, Mr. Richard Leonard</td>
+      <td>52.5542</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Asplund, Master. Edvin Rojj Felix</td>
+      <td>31.3875</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Persson, Mr. Ernst Ulrik</td>
+      <td>7.7750</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Tornquist, Mr. William Henry</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Dorking, Mr. Edward Arthur</td>
+      <td>8.0500</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>de Mulder, Mr. Theodore</td>
+      <td>9.5000</td>
     </tr>
   </tbody>
 </table>
@@ -1477,14 +1593,9 @@ axes[1].set_title('Distribution of Classes for Female Casualties');
 ```
 
 
-
-
-    Text(0.5, 1.0, 'Distribution of Classes for Female Casualties')
-
-
-
-
-![png](index_files/index_64_1.png)
+    
+![png](index_files/index_64_0.png)
+    
 
 
 ## Summary
