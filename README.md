@@ -1,4 +1,3 @@
-
 # Using SQL with Pandas - Lab
 
 ## Introduction
