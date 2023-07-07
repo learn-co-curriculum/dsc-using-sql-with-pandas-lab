@@ -724,7 +724,7 @@ first_class_df = df[df['Pclass'] == '1']
 second_third_class_df = df[df['Pclass'] != '1']
 ```
 
-Now, create histograms of the surivival for each subgroup, just as you did above.  
+Now, create histograms of the survival for each subgroup, just as you did above.  
 
 
 ```python
