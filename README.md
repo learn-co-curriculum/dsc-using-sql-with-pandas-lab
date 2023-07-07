@@ -123,7 +123,7 @@ first_class_df = None
 second_third_class_df = None
 ```
 
-Now, create histograms of the surivival for each subgroup, just as you did above.  
+Now, create histograms of the survival for each subgroup, just as you did above.  
 
 
 ```python
